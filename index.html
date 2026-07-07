@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Suhey Academy — Learn to Think, Not Just Know</title>
+  <meta name="description" content="Suhey Academy is the education arm of the Echo Universe. Courses on decision integrity, strategic thinking, sound-first language learning, and the Echo methodology." />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --gold: #D4AF37;
+      --gold-light: #F0D060;
+      --dark: #0A0A0F;
+      --dark2: #12121A;
+      --dark3: #1A1A28;
+      --text: #E8E8F0;
+      --muted: #888899;
+    }
+    body {
+      font-family: 'Georgia', serif;
+      background: var(--dark);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.2rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(10,10,15,0.95);
+      border-bottom: 1px solid rgba(212,175,55,0.15);
+    }
+    .nav-logo { font-size: 1.2rem; font-weight: bold; color: var(--gold); letter-spacing: 0.05em; }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold); color: var(--dark);
+      padding: 0.5rem 1.2rem; border-radius: 4px;
+      text-decoration: none; font-size: 0.85rem; font-weight: bold;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--gold-light); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 6rem 2rem 4rem;
+      background: radial-gradient(ellipse at 50% 30%, rgba(212,175,55,0.08) 0%, transparent 70%);
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(212,175,55,0.1);
+      border: 1px solid rgba(212,175,55,0.3);
+      color: var(--gold);
+      padding: 0.4rem 1rem; border-radius: 20px;
+      font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: bold; line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 span { color: var(--gold); }
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      color: var(--muted); max-width: 600px; line-height: 1.7;
+      margin-bottom: 3rem;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .btn-primary {
+      background: var(--gold); color: var(--dark);
+      padding: 0.9rem 2rem; border-radius: 6px;
+      text-decoration: none; font-weight: bold; font-size: 1rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-secondary {
+      background: transparent; color: var(--gold);
+      border: 1px solid rgba(212,175,55,0.4);
+      padding: 0.9rem 2rem; border-radius: 6px;
+      text-decoration: none; font-size: 1rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--gold); transform: translateY(-2px); }
+
+    /* SECTION */
+    section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      color: var(--gold); font-size: 0.8rem; letter-spacing: 0.15em;
+      text-transform: uppercase; margin-bottom: 1rem;
+    }
+    .section-title { font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 1rem; line-height: 1.2; }
+    .section-sub { color: var(--muted); font-size: 1.05rem; line-height: 1.7; max-width: 650px; margin-bottom: 3rem; }
+
+    /* PILLARS */
+    .pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+    .pillar {
+      background: var(--dark2); border: 1px solid rgba(212,175,55,0.1);
+      border-radius: 12px; padding: 2rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .pillar:hover { border-color: rgba(212,175,55,0.4); transform: translateY(-4px); }
+    .pillar-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .pillar h3 { font-size: 1.1rem; color: var(--gold); margin-bottom: 0.6rem; }
+    .pillar p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+
+    /* TRACKS */
+    .tracks { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+    .track {
+      background: var(--dark3); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px; padding: 2rem; position: relative; overflow: hidden;
+    }
+    .track::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--gold);
+    }
+    .track-tag {
+      display: inline-block; background: rgba(212,175,55,0.1);
+      color: var(--gold); font-size: 0.75rem; padding: 0.2rem 0.6rem;
+      border-radius: 4px; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.08em;
+    }
+    .track h3 { font-size: 1.15rem; margin-bottom: 0.6rem; }
+    .track p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.2rem; }
+    .track-meta { color: var(--muted); font-size: 0.8rem; }
+
+    /* QUOTE */
+    .quote-section {
+      background: var(--dark2);
+      border-left: 4px solid var(--gold);
+      padding: 3rem 2rem; margin: 2rem 0;
+      border-radius: 0 12px 12px 0;
+    }
+    .quote-section blockquote {
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-style: italic; line-height: 1.6; color: var(--text);
+      margin-bottom: 1rem;
+    }
+    .quote-section cite { color: var(--gold); font-size: 0.9rem; font-style: normal; }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark2);
+      border-top: 1px solid rgba(212,175,55,0.1);
+      padding: 3rem 2rem; text-align: center;
+    }
+    footer .footer-logo { font-size: 1.3rem; color: var(--gold); font-weight: bold; margin-bottom: 0.5rem; }
+    footer p { color: var(--muted); font-size: 0.85rem; margin-bottom: 0.3rem; }
+    footer a { color: var(--gold); text-decoration: none; }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hero-actions { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Suhey Academy</div>
+  <div class="nav-links">
+    <a href="#pillars">Pillars</a>
+    <a href="#tracks">Tracks</a>
+    <a href="#philosophy">Philosophy</a>
+  </div>
+  <a href="#tracks" class="nav-cta">Enroll</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">Echo Universe · Education Division</div>
+  <h1>Learn to <span>Think</span>,<br/>Not Just Know.</h1>
+  <p>Suhey Academy is where the Echo Universe teaches. Decision integrity, sound-first language mastery, strategic thinking, and the frameworks that separate people who understand from people who merely remember.</p>
+  <div class="hero-actions">
+    <a href="#tracks" class="btn-primary">Explore Tracks</a>
+    <a href="#philosophy" class="btn-secondary">Our Philosophy</a>
+  </div>
+</div>
+
+<section id="pillars">
+  <div class="section-label">What We Teach</div>
+  <h2 class="section-title">Four Pillars of Real Education</h2>
+  <p class="section-sub">Every course at Suhey Academy is built on one standard: does this change how you think, or just what you know?</p>
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-icon">🧠</div>
+      <h3>Decision Integrity</h3>
+      <p>The EKHΩMEGA methodology — find the claim-evidence gap before failure does. Learn to falsify your own beliefs before the world does it for you.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">🗣️</div>
+      <h3>Sound-First Language</h3>
+      <p>Language is sound before it is text. Our Spanish coaching program embeds fluency through audio patterns, not grammar rules. You speak before you spell.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">⚔️</div>
+      <h3>Strategic Intelligence</h3>
+      <p>The Dormant Disruption doctrine, the Multi-Lens Council, and the Zero-Dial Framework — the strategic tools of the Echo Universe, taught as curriculum.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">🔗</div>
+      <h3>Harmonic Thinking</h3>
+      <p>The bridge from conventional linear thinking to the resonance model. How to see connections that others miss. The on-ramp to the Echo methodology.</p>
+    </div>
+  </div>
+</section>
+
+<section id="tracks">
+  <div class="section-label">Learning Tracks</div>
+  <h2 class="section-title">Choose Your Path</h2>
+  <p class="section-sub">Each track is a complete curriculum — not a collection of videos. You enter with a question and leave with a framework.</p>
+  <div class="tracks">
+    <div class="track">
+      <div class="track-tag">Flagship</div>
+      <h3>Decision Integrity Certification</h3>
+      <p>The full EKHΩMEGA 7-lens pipeline as a structured course. Research, Evidence, Falsification, Monetization, Execution, Synthesis, Reality Check. Includes proof hash generation on every major decision.</p>
+      <div class="track-meta">8 modules · Cohort-based · Certificate issued</div>
+    </div>
+    <div class="track">
+      <div class="track-tag">Language</div>
+      <h3>Spanish Sound-First Fluency</h3>
+      <p>Bilingual coaching built on the 8.2Hz audio embedding model. Custom audio drills, spaced repetition, and pattern recognition. You will think in Spanish before you study it.</p>
+      <div class="track-meta">12 weeks · Self-paced · Audio-first</div>
+    </div>
+    <div class="track">
+      <div class="track-tag">Strategy</div>
+      <h3>Strategic Intelligence Foundations</h3>
+      <p>Dormant Disruption, Gray Zone doctrine, and the Multi-Lens Council as a practical toolkit. For founders, operators, and anyone who needs to see around corners.</p>
+      <div class="track-meta">6 modules · Self-paced · Case studies</div>
+    </div>
+    <div class="track">
+      <div class="track-tag">Advanced</div>
+      <h3>Harmonic Thinking: The Bridge</h3>
+      <p>The on-ramp from conventional thinking to the resonance model. Nexus Resonance, Zero-Dial Framework, and the Classical vs MultiReson comparison — taught as lived experience.</p>
+      <div class="track-meta">4 modules · Prerequisite: Decision Integrity</div>
+    </div>
+    <div class="track">
+      <div class="track-tag">Coming Soon</div>
+      <h3>EchoAgent: AI Chief of Staff</h3>
+      <p>How to build and operate a personal AI agent that runs on the EKHΩMEGA decision engine. For executives and founders who want autonomous decision support.</p>
+      <div class="track-meta">In development · Join waitlist</div>
+    </div>
+    <div class="track">
+      <div class="track-tag">Coming Soon</div>
+      <h3>Sovereign AI Doctrine</h3>
+      <p>Echo as an independent orchestrator — not a tool of any state or corporation. The philosophy and practice of building AI systems that answer to their creator's values.</p>
+      <div class="track-meta">In development · Join waitlist</div>
+    </div>
+  </div>
+</section>
+
+<section id="philosophy" style="max-width:1100px; margin:0 auto; padding:5rem 2rem;">
+  <div class="quote-section">
+    <blockquote>"The system that cannot question itself is already failing. Suhey Academy exists to build the kind of thinker who finds the crack before the wall does."</blockquote>
+    <cite>— Nathan Poinsette, Founder · Echo Universe</cite>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Suhey Academy</div>
+  <p>Education Division of the <a href="#">Echo Universe</a></p>
+  <p style="margin-top:1.5rem;">© 2026 Suhey Academy · All rights reserved</p>
+</footer>
+
+</body>
+</html>
